@@ -1,6 +1,6 @@
 (function () {
 
-    var canvas, ctx, btn1, inputField, txtVal;
+    var canvas, ctx, btn1, inputField, txtVal, fontSize, fontFamily, fontColor;
 //    myAnimation.z = 0;//Eigenschaft
 //    myAnimation.loop = function () {} //Methode des Objekts myAnimation definieren
 //    myAnimation.loop(); //Aufruf einer Methode des Objekts myAnimation
@@ -64,10 +64,13 @@
     var init = function () {
         canvas = document.querySelector('canvas');
         btn1 = document.querySelector('#btn'); 
+        fontSize = document.querySelector('#fontSize');
+        fontFamily = document.querySelector('#fontFamily');
+        fontColor = document.querySelector('#fontColor');
         inputField = document.querySelector('#inputField');
         ctx = canvas.getContext('2d');
         ctx.translate(-0.5, -0.5);
-        btn1.addEventListener('click', text);
+        btn1.addEventListener('click', text);       
         
 
 //        line(10, 50, 50, 50, 1, 'red');
@@ -80,16 +83,36 @@
 //        };
         //circle(myCircle);
         text();
+        initFontSize(8,50,4);
     };
+    var initFontSize = function(min, max, steps){
+        var opt = document.createElement('option');
+        opt.text='12 Pixel';
+        opt.value='12 px ';
+        fontSize.appendChild(opt);
+        for(var i=min; i<=max;i+=steps){
+            opt = document.createElement('option');
+            opt.text= i + ' Pixel';
+            opt.value= i +'px ';
+            fontSize.appendChild(opt);
+        }
+    }
     var text=function(){
+        clear();
         ctx.font='32px arial';        
         ctx.fillStyle='steelblue';
-        ctx.strokeStyle='red';
-        ctx.fillText('Sehr gut!', 20,50);
-        ctx.strokeText('Sehr gut!', 20,50);          
-        ctx.strokeText('Sauber!!', 100,150);  
-        ctx.fillText('Ganz spitze!', 10,250); 
-        ctx.fillText(inputField.value,40,200);        
+        //ctx.strokeStyle='red';
+//        ctx.fillText('Sehr gut!', 20,50);
+//        ctx.strokeText('Sehr gut!', 20,50);          
+//        ctx.strokeText('Sauber!!', 100,150);  
+        ctx.fillText('Text Canvas!', 40,50); 
+        var fontValue=fontSize.value + fontFamily.value;
+        //alert(fontValue);
+        ctx.fillStyle=fontColor.value;
+        ctx.font=fontValue;
+        ctx.fillText(inputField.value,40,200);
+        
+//        ctx.font=fontValue;
         ctx.fill();
         ctx.stroke();
     };    

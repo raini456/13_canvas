@@ -38,8 +38,27 @@
         <canvas width="400" height="300"></canvas>
         <hr>
         <div class="container">
+            Texteingabe:
             <input type="text" class="form-control" id="inputField">
+            <label for="fontSize">Schriftgröße
+                <select class="form-control" name="fontSize" id="fontSize">     
+                </select>
+            </label>
+            <label for="fontFamily">Schriftart
+            <select class="form-control" name="fontFamily" id="fontFamily">
+                <option value="arial">Arial</option>
+                <option value="times">Times</option>
+                <option value="helvetica">Helvetica</option>
+                <option value="courier">Courier</option>                
+            </select>
+            </label>
+            <br><br>
+            <label for="fontColor">Schriftfarbe
+              <input name="fontColor" type="color" id="fontColor">
+            </label><br>
             <button type="button" id="btn" name="button" class="btn-success mt-3">Einfügen</button> 
+            
+            
         </div>
         <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
         <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
